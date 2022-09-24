@@ -5,7 +5,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Constants {
   File a = File('../../.env');
-  static String kIpAdress = 'https://';
+  static String kIpAdress =
+      'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=$apiKeyForNews';
 
   static String apiKeyForNews = dotenv.env['API_KEY']!;
 

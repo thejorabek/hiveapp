@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     child: ListTile(
                         title: Text(
-                            snapshot.data!.articles[index].author.toString())),
+                            snapshot.data!.articles[index].title.toString())),
                   );
                 });
           }

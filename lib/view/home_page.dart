@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hiveapp/model/articles_model.dart';
 import 'package:hiveapp/model/new_model.dart';
 import 'package:hiveapp/service/news_service.dart';
 import 'package:shimmer/shimmer.dart';
@@ -15,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var box = Hive.box('news');
     return Scaffold(
       appBar: AppBar(
         title: const Text('News App'),
@@ -48,6 +51,7 @@ class _HomePageState extends State<HomePage> {
               child: Text('Has Error With Service'),
             );
           } else {
+            List<Articles> articles = box.get('articles');
             return ListView.builder(
                 itemCount: snapshot.data!.articles.length,
                 itemBuilder: (context, index) {
@@ -65,8 +69,7 @@ class _HomePageState extends State<HomePage> {
                           child: Row(children: [
                             Expanded(
                               child: SizedBox(
-                                  child: Image.network(snapshot
-                                      .data!.articles[index].urlToImage,fit: BoxFit.cover,)),
+                                  child: Image.network(articles[index].urlToImage,fit: BoxFit.cover,)),
                               flex: 1,
                             ),
                             Expanded(

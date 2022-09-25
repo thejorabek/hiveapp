@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hiveapp/model/new_model.dart';
 import 'package:hiveapp/service/news_service.dart';
